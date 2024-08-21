@@ -17,8 +17,13 @@ class Course(models.Model):
         auto_now_add=False,
         verbose_name='Дата и время начала курса'
     )
-
     # TODO
+    """Добавляю поле 'стоимость'"""
+    price = models.DecimalField(
+        verbose_name='Стоимость',
+        decimal_places=2,
+        max_digits=8
+    )
 
     class Meta:
         verbose_name = 'Курс'
@@ -40,8 +45,13 @@ class Lesson(models.Model):
         max_length=250,
         verbose_name='Ссылка',
     )
-
     # TODO
+    """Добавляю связь с сущностью курса"""
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        verbose_name='Курс'
+    )
 
     class Meta:
         verbose_name = 'Урок'

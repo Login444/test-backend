@@ -12,6 +12,7 @@ class CustomUserSerializer(UserSerializer):
 
     class Meta:
         model = User
+        field = '__all__'
 
 
 class SubscriptionSerializer(serializers.ModelSerializer):
