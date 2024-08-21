@@ -19,9 +19,11 @@ class SubscriptionSerializer(serializers.ModelSerializer):
     """Сериализатор подписки."""
 
     # TODO
+    subscription = serializers.StringRelatedField(read_only=True)
 
     class Meta:
         model = Subscription
         fields = (
-            # TODO
+            'course',
+            'has_access'
         )

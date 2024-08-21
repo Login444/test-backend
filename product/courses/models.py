@@ -1,4 +1,5 @@
 from django.db import models
+from ..users.models import CustomUser
 
 
 class Course(models.Model):
@@ -64,8 +65,23 @@ class Lesson(models.Model):
 
 class Group(models.Model):
     """Модель группы."""
-
     # TODO
+    students_count = models.IntegerField(
+        max_value=30,
+        min_value=0,
+    )
+
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        verbose_name='Курс'
+    )
+
+    students = models.ManyToManyField(
+        CustomUser,
+        verbose_name='Список студентов',
+        blank=True
+    )
 
     class Meta:
         verbose_name = 'Группа'

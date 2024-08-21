@@ -67,7 +67,7 @@ class Subscription(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Студент')
 
-    has_accees = models.BooleanField(
+    has_access = models.BooleanField(
         default=False,
         verbose_name='Открыт доступ'
     )

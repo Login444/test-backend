@@ -1,5 +1,5 @@
 from rest_framework.permissions import BasePermission, SAFE_METHODS
-from users.models import Subscription
+from users.models import Subscription, Balance
 
 
 def make_payment(request):
@@ -10,11 +10,11 @@ def make_payment(request):
 class IsStudentOrIsAdmin(BasePermission):
     def has_permission(self, request, view):
         # TODO
-        pass
+        return request.user.is_staff or request.method in SAFE_METHODS
 
     def has_object_permission(self, request, view, obj):
         # TODO
-        pass
+        return request.user.is_staff or request.method in SAFE_METHODS
 
 
 class ReadOnlyOrIsAdmin(BasePermission):
